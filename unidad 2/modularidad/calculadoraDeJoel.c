@@ -128,7 +128,7 @@ int main() {
             }
 
             case 4: { 
-                // Salir
+                // Salir de sistema
                 do {
                     printf("\n¿Quieres salir de la calculadora de Joel? (s / n): ");
                     scanf(" %c", &confirmacion);
