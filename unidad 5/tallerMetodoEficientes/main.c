@@ -8,6 +8,7 @@ Luis Alberto Gonzalez Arias
 Valentina Alomia Montaño
 Maria Isabel Sierra Garcia
 José Angel Perea Valencia (YO)
+Edwin Andres Mosquera Solis
 */
 
 #include <stdio.h>

@@ -28,6 +28,7 @@ El sistema simula un **Muelle Virtual de Carga** con interfaz amigable mediante 
 - Valentina Alomia Montaño
 - Maria Isabel Sierra Garcia
 - **José Angel Perea Valencia**
+- Edwin Andres Mosquera Solis
 
 ---
 
