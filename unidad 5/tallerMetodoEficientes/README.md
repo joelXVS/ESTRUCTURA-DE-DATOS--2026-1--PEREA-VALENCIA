@@ -60,6 +60,7 @@ El sistema simula un **Muelle Virtual de Carga** con interfaz amigable mediante 
 ---
 
 ## Estructura del Proyecto
+```bash
 unidad5/tallerMetodosEficientes/
 ├── main.c                    # Archivo principal y menú
 ├── quicksort.c               # Implementación de QuickSort
@@ -68,6 +69,7 @@ unidad5/tallerMetodosEficientes/
 ├── busquedaBin.c             # Implementación de Busqueda Binaria de elementos
 ├── README.md                 # Este archivo
 └── evidencias/               # Capturas de pantalla
+```
 
 ---
 
@@ -78,3 +80,4 @@ unidad5/tallerMetodosEficientes/
 ```bash
 gcc main.c quicksort.c mergesort.c heapsort.c -o contenedores -Wall -std=c99
 ./contenedores
+```
