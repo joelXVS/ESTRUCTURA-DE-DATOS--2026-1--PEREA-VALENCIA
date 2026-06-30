@@ -34,3 +34,7 @@ La aplicación debe integrar ambas estructuras dentro del mismo flujo logístico
 - Darin Stiven Angulo Valencia
 - **José Angel Perea Valencia**
 - Edwin Andres Mosquera Solis
+
+```bash
+gcc SEVA.c cola.c pila.c -o SEVA.exe
+```

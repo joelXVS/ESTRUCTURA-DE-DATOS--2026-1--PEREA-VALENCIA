@@ -26,15 +26,15 @@ void leer(char *texto, int max) {
 
 // menu principal
 void menu() {
-    printf("\n--- muelle virtual ---\n");
-    printf("1. registrar paquete\n");
-    printf("2. procesar aduana (crear contenedor)\n");
-    printf("3. ver paquetes en cola\n");
-    printf("4. ver contenedores en pila\n");
-    printf("5. buscar contenedor\n");
-    printf("6. despachar contenedor\n");
-    printf("7. salir\n");
-    printf("elige una opcion: ");
+    printf("\n--- Muelle Virtual SEVA Express---\n");
+    printf("1. Registrar nuevo paquete/pedido\n");
+    printf("2. Procesar pedidos a la Aduana\n");
+    printf("3. Ver paquetes en cola de espera\n");
+    printf("4. Ver contenedores apilados\n");
+    printf("5. Buscar ubicación de contenedor\n");
+    printf("6. Despachar contenedor\n");
+    printf("7. Cerrar sistema\n");
+    printf("Seleccione una opcion: ");
 }
 
 // registrar paquete
@@ -43,13 +43,13 @@ void registrar() {
     char cliente[50], destino[50];
     float peso;
 
-    printf("\n--- registrar paquete ---\n");
-    printf("nombre del cliente: ");
+    printf("\n--- Registrar nuevo paquete ---\n");
+    printf("Nombre del cliente: ");
     leer(cliente, 50);
-    printf("peso (kg): ");
+    printf("Peso (kg): ");
     scanf("%f", &peso);
     limpiar();
-    printf("destino: ");
+    printf("Destino (país): ");
     leer(destino, 50);
 
     contadorPaquetes++;
@@ -59,14 +59,14 @@ void registrar() {
 // procesar aduana
 void procesar() {
     if (frente == NULL) {
-        printf("\nno hay paquetes en la cola.\n");
+        printf("\nNo hay paquetes en la cola de espera.\n");
         return;
     }
 
     limpiar();
-    printf("\n--- procesar aduana ---\n");
+    printf("\n--- Procesar pedidos a la aduana ---\n");
     char destino[50];
-    printf("destino para agrupar: ");
+    printf("Destino para agrupar paquetes (país): ");
     leer(destino, 50);
 
     float pesoTotal = 0;
@@ -101,34 +101,34 @@ void procesar() {
     if (encontro) {
         contadorContenedores++;
         push(&tope, contadorContenedores, destino, pesoTotal, cant);
-        printf("contenedor creado con %d paquetes, peso %.2f kg.\n", cant, pesoTotal);
+        printf("Contenedor creado con %d paquetes, peso %.2f kg.\n", cant, pesoTotal);
     } else {
-        printf("no hay paquetes con ese destino.\n");
+        printf("No hay paquetes con este país de destino ingresado.\n");
     }
 }
 
 // despachar contenedor
 void despachar() {
     if (tope == NULL) {
-        printf("\nno hay contenedores para despachar.\n");
+        printf("\nNo hay contenedores para despachar.\n");
         return;
     }
     NodoPila *despachado = pop(&tope);
-    printf("\ncontenedor #%d a %s ha zarpado.\n", despachado->id, despachado->destino);
+    printf("\nContenedor #%d a %s ha zarpado y esta en camino al país de destino.\n", despachado->id, despachado->destino);
     free(despachado);
 }
 
 // buscar contenedor (usando pila temporal para no romper LIFO)
 void buscar() {
     if (tope == NULL) {
-        printf("\nla pila esta vacia.\n");
+        printf("\nNo hay contenedores en la pila.\n");
         return;
     }
 
     limpiar();
     char destino[50];
-    printf("\n--- buscar contenedor ---\n");
-    printf("destino a buscar: ");
+    printf("\n--- Buscar ubicación de contenedor ---\n");
+    printf("Destino a buscar (país): ");
     leer(destino, 50);
 
     NodoPila *pilaTemp = NULL;
@@ -139,7 +139,7 @@ void buscar() {
         NodoPila *aux = pop(&tope);
         
         if (!encontro && strcmp(aux->destino, destino) == 0) {
-            printf("\ncontenedor encontrado:\n");
+            printf("\nContenedor encontrado:\n");
             printf("ID: %d | Destino: %s | Peso: %.2f kg | Paquetes: %d\n", 
                    aux->id, aux->destino, aux->peso, aux->paquetes);
             encontro = 1;
@@ -160,7 +160,7 @@ void buscar() {
     }
 
     if (!encontro) {
-        printf("no se encontro ese destino.\n");
+        printf("No se encontró ese destino.\n");
     }
 }
 
@@ -170,11 +170,10 @@ int main() {
     do { 
         menu();
         if (scanf("%d", &opcion) != 1) {
-            printf("entrada invalida.\n");
+            printf("La entrada fue invalida.\n");
             limpiar();
             continue;
         }
-        limpiar();
 
         switch (opcion) {
             case 1: registrar(); break;
@@ -184,14 +183,15 @@ int main() {
             case 5: buscar(); break;
             case 6: despachar(); break;
             case 7: break;
-            default: printf("opcion no valida.\n");
+            default: printf("La opcion no es valida.\n");
         }
     } while (opcion != 7);
 
     // liberar todo antes de salir
     liberar_cola(&frente);
     liberar_pila(&tope);
-    printf("\nmemoria liberada. cerrando programa.\n");
+    printf("\nMemoria liberada. Estamos cerrando el programa.\n");
+    printf("\nGracias por usar nuestro sistema.\n\tAtt: SEVA EXPRESS\n");
 
     return 0;
 }

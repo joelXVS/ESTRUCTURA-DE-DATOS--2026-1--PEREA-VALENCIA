@@ -7,7 +7,7 @@
 void enqueue(NodoCola **frente, NodoCola **fin, int id, char *cliente, float peso, char *destino) {
     NodoCola *nuevo = (NodoCola *)malloc(sizeof(NodoCola));
     if (nuevo == NULL) {
-        printf("error: no hay memoria.\n");
+        printf("Error: no hay datos en memoria.\n");
         return;
     }
     nuevo->id = id;
@@ -22,7 +22,7 @@ void enqueue(NodoCola **frente, NodoCola **fin, int id, char *cliente, float pes
         (*fin)->siguiente = nuevo;
         *fin = nuevo;
     }
-    printf("paquete %d agregado a la cola.\n", id);
+    printf("Paquete %d agregado a la cola.\n", id);
 }
 
 // sacar paquete de la cola
@@ -40,10 +40,10 @@ NodoCola* dequeue(NodoCola **frente, NodoCola **fin) {
 // mostrar paquetes en cola
 void mostrar_cola(NodoCola *frente) {
     if (frente == NULL) {
-        printf("la cola esta vacia.\n");
+        printf("La cola está vacía.\n");
         return;
     }
-    printf("\n--- paquetes en aduana ---\n");
+    printf("\n--- Paquetes en aduana ---\n");
     NodoCola *aux = frente;
     while (aux != NULL) {
         printf("[ID: %d] Cliente: %s | Peso: %.2f | Destino: %s\n", 

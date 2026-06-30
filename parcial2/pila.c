@@ -7,7 +7,7 @@
 void push(NodoPila **tope, int id, char *destino, float peso, int cant) {
     NodoPila *nuevo = (NodoPila *)malloc(sizeof(NodoPila));
     if (nuevo == NULL) {
-        printf("error: no hay memoria.\n");
+        printf("Error: no hay datos en memoria.\n");
         return;
     }
     nuevo->id = id;
@@ -17,7 +17,7 @@ void push(NodoPila **tope, int id, char *destino, float peso, int cant) {
     
     nuevo->siguiente = *tope;
     *tope = nuevo;
-    printf("contenedor %d agregado a la pila.\n", id);
+    printf("Contenedor %d agregado a la pila.\n", id);
 }
 
 // sacar contenedor de la pila
@@ -33,10 +33,10 @@ NodoPila* pop(NodoPila **tope) {
 // mostrar contenedores en pila
 void mostrar_pila(NodoPila *tope) {
     if (tope == NULL) {
-        printf("la pila esta vacia.\n");
+        printf("La pila está vacía.\n");
         return;
     }
-    printf("\n--- contenedores en el muelle ---\n");
+    printf("\n--- Contenedores en muelle ---\n");
     NodoPila *aux = tope;
     int pos = 1;
     while (aux != NULL) {
